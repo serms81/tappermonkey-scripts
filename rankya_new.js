@@ -94,136 +94,94 @@
   const isEdgeCOlumbia = ~location.href.indexOf(domains.edgeco) && !~location.href.indexOf(domains.edge)
 
   if (isWwwAr) {
-    go.appendChild(createAnchor('Local', domains.local3000ar, domains.wwwar))
-    go.appendChild(createAnchor('Edge', domains.edgear, domains.wwwar))
-    go.appendChild(createAnchor('Local', domains.local3000ar, domains.wwwar, true))
-    go.appendChild(createAnchor('Edge', domains.edgear, domains.wwwar, true))
+    creatLinksLocalMasEdge(domains.local3000ar, domains.edgear, domains.wwwar)
   }
   else if (~location.href.indexOf(domains.edgear)) {
-    go.appendChild(createAnchor('WWW', domains.wwwar, domains.edgear))
-    go.appendChild(createAnchor('Local', domains.local3000ar, domains.edgear))
-    go.appendChild(createAnchor('WWW', domains.wwwar, domains.edgear, true))
-    go.appendChild(createAnchor('Local', domains.local3000ar, domains.edgear, true))
+    creatLinksWwwMasLocal(domains.wwwar, domains.local3000ar, domains.edgear)
   }
   else if (~location.href.indexOf(domains.local3000ar)) {
-    go.appendChild(createAnchor('WWW', domains.wwwar, domains.local3000ar))
-    go.appendChild(createAnchor('Edge', domains.edgear, domains.local3000ar))
-    go.appendChild(createAnchor('WWW', domains.wwwar, domains.local3000ar, true))
-    go.appendChild(createAnchor('Edge', domains.edgear, domains.local3000ar, true))
+    creatLinksWwwMasEdge(domains.wwwar, domains.edgear, domains.local3000ar)
   }
 
   if (isWwwCom) {
-    go.appendChild(createAnchor('Local', domains.local3000, domains.www))
-    go.appendChild(createAnchor('Edge', domains.edge, domains.www))
-    go.appendChild(createAnchor('Local', domains.local3000, domains.www, true))
-    go.appendChild(createAnchor('Edge', domains.edge, domains.www, true))
+    creatLinksLocalMasEdge(domains.local3000, domains.edge, domains.www)
   }
   else if (isEdgeCom) {
-    go.appendChild(createAnchor('WWW', domains.www, domains.edge))
-    go.appendChild(createAnchor('Local', domains.local3000, domains.edge))
-    go.appendChild(createAnchor('WWW', domains.www, domains.edge, true))
-    go.appendChild(createAnchor('Local', domains.local3000, domains.edge, true))
+    creatLinksWwwMasLocal(domains.www, domains.local3000, domains.edge)
   }
   else if (~location.href.indexOf(domains.local3000)) {
-    go.appendChild(createAnchor('WWW', domains.www, domains.local3000))
-    go.appendChild(createAnchor('Edge', domains.edge, domains.local3000))
-    go.appendChild(createAnchor('WWW', domains.www, domains.local3000, true))
-    go.appendChild(createAnchor('Edge', domains.edge, domains.local3000, true))
+    creatLinksWwwMasEdge(domains.www, domains.edge, domains.local3000)
   }
 
   if (~location.href.indexOf(domains.wwwcl)) {
-    go.appendChild(createAnchor('Local', domains.local3000cl, domains.wwwcl))
-    go.appendChild(createAnchor('Edge', domains.edgecl, domains.wwwcl))
-    go.appendChild(createAnchor('Local', domains.local3000cl, domains.wwwcl, true))
-    go.appendChild(createAnchor('Edge', domains.edgecl, domains.wwwcl, true))
+    creatLinksLocalMasEdge(domains.local3000cl, domains.edgecl, domains.wwwcl)
   }
   else if (~location.href.indexOf(domains.edgecl)) {
-    go.appendChild(createAnchor('WWW', domains.wwwcl, domains.edgecl))
-    go.appendChild(createAnchor('Local', domains.local3000cl, domains.edgecl))
-    go.appendChild(createAnchor('WWW', domains.wwwcl, domains.edgecl, true))
-    go.appendChild(createAnchor('Local', domains.local3000cl, domains.edgecl, true))
+    creatLinksWwwMasLocal(domains.wwwcl, domains.local3000cl, domains.edgecl)
   }
   else if (~location.href.indexOf(domains.local3000cl)) {
-    go.appendChild(createAnchor('WWW', domains.wwwcl, domains.local3000cl))
-    go.appendChild(createAnchor('Edge', domains.edgecl, domains.local3000cl))
-    go.appendChild(createAnchor('WWW', domains.wwwcl, domains.local3000cl, true))
-    go.appendChild(createAnchor('Edge', domains.edgecl, domains.local3000cl, true))
+    creatLinksWwwMasEdge(domains.wwwcl, domains.edgecl, domains.local3000cl)
   }
 
   if (isWwwCOlumbia) {
-    go.appendChild(createAnchor('Local', domains.local3000co, domains.wwwco))
-    go.appendChild(createAnchor('Edge', domains.edgeco, domains.wwwco))
-    go.appendChild(createAnchor('Local', domains.local3000co, domains.wwwco, true))
-    go.appendChild(createAnchor('Edge', domains.edgeco, domains.wwwco, true))
+    creatLinksLocalMasEdge(domains.local3000co, domains.edgeco, domains.wwwco)
   }
   else if (isEdgeCOlumbia) {
-    go.appendChild(createAnchor('WWW', domains.wwwco, domains.edgeco))
-    go.appendChild(createAnchor('Local', domains.local3000co, domains.edgeco))
-    go.appendChild(createAnchor('WWW', domains.wwwco, domains.edgeco, true))
-    go.appendChild(createAnchor('Local', domains.local3000co, domains.edgeco, true))
+    creatLinksWwwMasLocal(domains.wwwco, domains.local3000co, domains.edgeco)
   }
   else if (~location.href.indexOf(domains.local3000co)) {
-    go.appendChild(createAnchor('WWW', domains.wwwco, domains.local3000co))
-    go.appendChild(createAnchor('Edge', domains.edgeco, domains.local3000co))
-    go.appendChild(createAnchor('WWW', domains.wwwco, domains.local3000co, true))
-    go.appendChild(createAnchor('Edge', domains.edgeco, domains.local3000co, true))
+    creatLinksWwwMasEdge(domains.wwwco, domains.edgeco, domains.local3000co)
   }
 
   if (~location.href.indexOf(domains.wwwmx)) {
-    go.appendChild(createAnchor('Local', domains.local3000mx, domains.wwwmx))
-    go.appendChild(createAnchor('Edge', domains.edgemx, domains.wwwmx))
-    go.appendChild(createAnchor('Local', domains.local3000mx, domains.wwwmx, true))
-    go.appendChild(createAnchor('Edge', domains.edgemx, domains.wwwmx, true))
+    creatLinksLocalMasEdge(domains.local3000mx, domains.edgemx, domains.wwwmx)
   }
   else if (~location.href.indexOf(domains.edgemx)) {
-    go.appendChild(createAnchor('WWW', domains.wwwmx, domains.edgemx))
-    go.appendChild(createAnchor('Local', domains.local3000mx, domains.edgemx))
-    go.appendChild(createAnchor('WWW', domains.wwwmx, domains.edgemx, true))
-    go.appendChild(createAnchor('Local', domains.local3000mx, domains.edgemx, true))
+    creatLinksWwwMasLocal(domains.wwwmx, domains.local3000mx, domains.edgemx)
   }
   else if (~location.href.indexOf(domains.local3000mx)) {
-    go.appendChild(createAnchor('WWW', domains.wwwmx, domains.local3000mx))
-    go.appendChild(createAnchor('Edge', domains.edgemx, domains.local3000mx))
-    go.appendChild(createAnchor('WWW', domains.wwwmx, domains.local3000mx, true))
-    go.appendChild(createAnchor('Edge', domains.edgemx, domains.local3000mx, true))
+    creatLinksWwwMasEdge(domains.wwwmx, domains.edgemx, domains.local3000mx)
   }
 
   if (~location.href.indexOf(domains.wwwpe)) {
-    go.appendChild(createAnchor('Local', domains.local3000pe, domains.wwwpe))
-    go.appendChild(createAnchor('Edge', domains.edgepe, domains.wwwpe))
-    go.appendChild(createAnchor('Local', domains.local3000pe, domains.wwwpe, true))
-    go.appendChild(createAnchor('Edge', domains.edgepe, domains.wwwpe, true))
+    creatLinksLocalMasEdge(domains.local3000pe, domains.edgepe, domains.wwwpe)
   }
   else if (~location.href.indexOf(domains.edgepe)) {
-    go.appendChild(createAnchor('WWW', domains.wwwpe, domains.edgepe))
-    go.appendChild(createAnchor('Local', domains.local3000pe, domains.edgepe))
-    go.appendChild(createAnchor('WWW', domains.wwwpe, domains.edgepe, true))
-    go.appendChild(createAnchor('Local', domains.local3000pe, domains.edgepe, true))
+    creatLinksWwwMasLocal(domains.wwwpe, domains.local3000pe, domains.edgepe)
   }
   else if (~location.href.indexOf(domains.local3000pe)) {
-    go.appendChild(createAnchor('WWW', domains.wwwpe, domains.local3000pe))
-    go.appendChild(createAnchor('Edge', domains.edgepe, domains.local3000pe))
-    go.appendChild(createAnchor('WWW', domains.wwwpe, domains.local3000pe, true))
-    go.appendChild(createAnchor('Edge', domains.edgepe, domains.local3000pe, true))
+    creatLinksWwwMasEdge(domains.wwwpe, domains.edgepe, domains.local3000pe)
   }
 
   if (~location.href.indexOf(domains.wwwus)) {
-    go.appendChild(createAnchor('Local', domains.local3000us, domains.wwwus))
-    go.appendChild(createAnchor('Edge', domains.edgeus, domains.wwwus))
-    go.appendChild(createAnchor('Local', domains.local3000us, domains.wwwus, true))
-    go.appendChild(createAnchor('Edge', domains.edgeus, domains.wwwus, true))
+    creatLinksLocalMasEdge(domains.local3000us, domains.edgeus, domains.wwwus)
   }
   else if (~location.href.indexOf(domains.edgeus)) {
-    go.appendChild(createAnchor('WWW', domains.wwwus, domains.edgeus))
-    go.appendChild(createAnchor('Local', domains.local3000us, domains.edgeus))
-    go.appendChild(createAnchor('WWW', domains.wwwus, domains.edgeus, true))
-    go.appendChild(createAnchor('Local', domains.local3000us, domains.edgeus, true))
+    creatLinksWwwMasLocal(domains.wwwus, domains.local3000us, domains.edgeus)
   }
   else if (~location.href.indexOf(domains.local3000us)) {
-    go.appendChild(createAnchor('WWW', domains.wwwus, domains.local3000us))
-    go.appendChild(createAnchor('Edge', domains.edgeus, domains.local3000us))
-    go.appendChild(createAnchor('WWW', domains.wwwus, domains.local3000us, true))
-    go.appendChild(createAnchor('Edge', domains.edgeus, domains.local3000us, true))
+    creatLinksWwwMasEdge(domains.wwwus, domains.edgeus, domains.local3000us)
+  }
+
+  function creatLinksLocalMasEdge(local, edge, currUrl) {
+    go.appendChild(createAnchor('Local', local, currUrl))
+    go.appendChild(createAnchor('Edge', edge, currUrl))
+    go.appendChild(createAnchor('Local', local, currUrl, true))
+    go.appendChild(createAnchor('Edge', edge, currUrl, true))
+  }
+
+  function creatLinksWwwMasEdge(www, edge, currUrl) {
+    go.appendChild(createAnchor('WWW', www, currUrl))
+    go.appendChild(createAnchor('Edge', edge, currUrl))
+    go.appendChild(createAnchor('WWW', www, currUrl, true))
+    go.appendChild(createAnchor('Edge', edge, currUrl, true))
+  }
+
+  function creatLinksWwwMasLocal(www, local, currUrl) {
+    go.appendChild(createAnchor('WWW', www, currUrl))
+    go.appendChild(createAnchor('Local', local, currUrl))
+    go.appendChild(createAnchor('WWW', www, currUrl, true))
+    go.appendChild(createAnchor('Local', local, currUrl, true))
   }
 
   let logout = document.createElement('a')
