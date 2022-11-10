@@ -25,38 +25,34 @@
 // @icon         https://www.rankia.com/favicon.ico
 // ==/UserScript==
 
+const port = 3000; // change to 3001 o any other
+const local = 'rnk'; // can be change to 'localhost'
+
 (function() {
   'use strict'
 
   const domains = {
     www: 'https://www.rankia.com',
     edge: 'https://edge.rankia.com',
-    local3000: 'http://localhost:3000',
-    local3001: 'http://localhost:3001',
+    local3000: 'http://localhost:#{port}',
     wwwar: 'https://www.rankia.com.ar',
     edgear: 'https://edge.rankia.com.ar',
-    local3000ar: 'http://rnk.ar:3000',
-    local3001ar: 'http://rnk.ar:3001',
+    local3000ar: 'http://rnk.ar:#{port}',
     wwwcl: 'https://www.rankia.cl',
     edgecl: 'https://edge.rankia.cl',
-    local3000cl: 'http://rnk.cl:3000',
-    local3001cl: 'http://rnk.cl:3001',
+    local3000cl: 'http://rnk.cl:#{port}',
     wwwco: 'https://www.rankia.co',
     edgeco: 'https://edge.rankia.co',
-    local3000co: 'http://rnk.co:3000',
-    local3001co: 'http://rnk.co:3001',
+    local3000co: 'http://rnk.co:#{port}',
     wwwmx: 'https://www.rankia.mx',
     edgemx: 'https://edge.rankia.mx',
-    local3000mx: 'http://rnk.mx:3000',
-    local3001mx: 'http://rnk.mx:3001',
+    local3000mx: 'http://rnk.mx:#{port}',
     wwwpe: 'https://www.rankia.pe',
     edgepe: 'https://edge.rankia.pe',
-    local3000pe: 'http://rnk.pe:3000',
-    local3001pe: 'http://rnk.pe:3001',
+    local3000pe: 'http://rnk.pe:#{port}',
     wwwus: 'https://www.rankia.us',
     edgeus: 'https://edge.rankia.us',
-    local3000us: 'http://rnk.us:3000',
-    local3001us: 'http://rnk.us:3001',
+    local3000us: 'http://rnk.us:#{port}',
   }
 
   GM_addStyle(`.gogogo a[target="_blank"]::after { content: ''; display: inline-block; width: 1.5em; height: 1.5em; background-repeat: no-repeat; filter: invert(); vertical-align: top; background-position: center center; background-size: 1.5em; background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+PHBhdGggZD0iTTM4LjI4OCAxMC4yOTdsMS40MTQgMS40MTUtMTQuOTkgMTQuOTktMS40MTQtMS40MTR6Ii8+PHBhdGggZD0iTTQwIDIwaC0ydi04aC04di0yaDEweiIvPjxwYXRoIGQ9Ik0zNSAzOEgxNWMtMS43IDAtMy0xLjMtMy0zVjE1YzAtMS43IDEuMy0zIDMtM2gxMXYySDE1Yy0uNiAwLTEgLjQtMSAxdjIwYzAgLjYuNCAxIDEgMWgyMGMuNiAwIDEtLjQgMS0xVjI0aDJ2MTFjMCAxLjctMS4zIDMtMyAzeiIvPjwvc3ZnPg==);}`)
