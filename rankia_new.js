@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Rankia Traversing
-// @version      0.1
+// @version      0.3
 // @author       serms81
 // @description  Cambia de entornos fácilmente
 // @match        https://*.rankia.com/*
@@ -12,47 +12,49 @@
 // @match        https://*.rankia.us/*
 // @match        http://localhost:3001/*
 // @match        http://localhost:3000/*
-// @match        http://localhost.*:3000/*
 // @match        http://localhost.*:3001/*
-// @match        http://rnk.com:3000/*
-// @match        http://rnk.ar/*
-// @match        http://rnk.cl/*
-// @match        http://rnk.co/*
-// @match        http://rnk.mx/*
-// @match        http://rnk.pe/*
-// @match        http://rnk.us/*
+// @match        http://localhost.*:3000/*
+// @match        http://localhost.com:3001/*
+// @match        http://localhost.com:3000/*
+// @match        http://localhost.ar/*
+// @match        http://localhost.cl/*
+// @match        http://localhost.co/*
+// @match        http://localhost.mx/*
+// @match        http://localhost.pe/*
+// @match        http://localhost.us/*
 // @grant        GM_addStyle
 // @icon         https://www.rankia.com/favicon.ico
 // ==/UserScript==
 
-const port = 3000; // change to 3001 o any other
-const local = 'rnk'; // can be change to 'localhost'
-
 (function() {
   'use strict'
+
+  //Config:
+  const local = 'localhost' // can be 'rnk' for rnk.com en local
+  const port = 3000 // can be 3001 o no se que...
 
   const domains = {
     www: 'https://www.rankia.com',
     edge: 'https://edge.rankia.com',
-    local3000: 'http://localhost:#{port}',
+    local: `http://${local !== 'localhost' ? local + '.com' : local}:${port}`,
     wwwar: 'https://www.rankia.com.ar',
     edgear: 'https://edge.rankia.com.ar',
-    local3000ar: 'http://rnk.ar:#{port}',
+    localAr: `http://${local}.ar:${port}`,
     wwwcl: 'https://www.rankia.cl',
     edgecl: 'https://edge.rankia.cl',
-    local3000cl: 'http://rnk.cl:#{port}',
+    localCl: `http://${local}.cl:${port}`,
     wwwco: 'https://www.rankia.co',
     edgeco: 'https://edge.rankia.co',
-    local3000co: 'http://rnk.co:#{port}',
+    localCo: `http://${local}.co:${port}`,
     wwwmx: 'https://www.rankia.mx',
     edgemx: 'https://edge.rankia.mx',
-    local3000mx: 'http://rnk.mx:#{port}',
+    localMx: `http://${local}.mx:${port}`,
     wwwpe: 'https://www.rankia.pe',
     edgepe: 'https://edge.rankia.pe',
-    local3000pe: 'http://rnk.pe:#{port}',
+    localPe: `http://${local}.pe:${port}`,
     wwwus: 'https://www.rankia.us',
     edgeus: 'https://edge.rankia.us',
-    local3000us: 'http://rnk.us:#{port}',
+    localUs: `http://${local}.us:${port}`,
   }
 
   GM_addStyle(`.gogogo a[target="_blank"]::after { content: ''; display: inline-block; width: 1.5em; height: 1.5em; background-repeat: no-repeat; filter: invert(); vertical-align: top; background-position: center center; background-size: 1.5em; background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+PHBhdGggZD0iTTM4LjI4OCAxMC4yOTdsMS40MTQgMS40MTUtMTQuOTkgMTQuOTktMS40MTQtMS40MTR6Ii8+PHBhdGggZD0iTTQwIDIwaC0ydi04aC04di0yaDEweiIvPjxwYXRoIGQ9Ik0zNSAzOEgxNWMtMS43IDAtMy0xLjMtMy0zVjE1YzAtMS43IDEuMy0zIDMtM2gxMXYySDE1Yy0uNiAwLTEgLjQtMSAxdjIwYzAgLjYuNCAxIDEgMWgyMGMuNiAwIDEtLjQgMS0xVjI0aDJ2MTFjMCAxLjctMS4zIDMtMyAzeiIvPjwvc3ZnPg==);}`)
@@ -90,73 +92,73 @@ const local = 'rnk'; // can be change to 'localhost'
   const isEdgeCOlumbia = ~location.href.indexOf(domains.edgeco) && !~location.href.indexOf(domains.edge)
 
   if (isWwwAr) {
-    creatLinksLocalMasEdge(domains.local3000ar, domains.edgear, domains.wwwar)
+    creatLinksLocalMasEdge(domains.localAr, domains.edgear, domains.wwwar)
   }
   else if (~location.href.indexOf(domains.edgear)) {
-    creatLinksWwwMasLocal(domains.wwwar, domains.local3000ar, domains.edgear)
+    creatLinksWwwMasLocal(domains.wwwar, domains.localAr, domains.edgear)
   }
-  else if (~location.href.indexOf(domains.local3000ar)) {
-    creatLinksWwwMasEdge(domains.wwwar, domains.edgear, domains.local3000ar)
+  else if (~location.href.indexOf(domains.localAr)) {
+    creatLinksWwwMasEdge(domains.wwwar, domains.edgear, domains.localAr)
   }
 
   if (isWwwCom) {
-    creatLinksLocalMasEdge(domains.local3000, domains.edge, domains.www)
+    creatLinksLocalMasEdge(domains.local, domains.edge, domains.www)
   }
   else if (isEdgeCom) {
-    creatLinksWwwMasLocal(domains.www, domains.local3000, domains.edge)
+    creatLinksWwwMasLocal(domains.www, domains.local, domains.edge)
   }
-  else if (~location.href.indexOf(domains.local3000)) {
-    creatLinksWwwMasEdge(domains.www, domains.edge, domains.local3000)
+  else if (~location.href.indexOf(domains.local)) {
+    creatLinksWwwMasEdge(domains.www, domains.edge, domains.local)
   }
 
   if (~location.href.indexOf(domains.wwwcl)) {
-    creatLinksLocalMasEdge(domains.local3000cl, domains.edgecl, domains.wwwcl)
+    creatLinksLocalMasEdge(domains.localCl, domains.edgecl, domains.wwwcl)
   }
   else if (~location.href.indexOf(domains.edgecl)) {
-    creatLinksWwwMasLocal(domains.wwwcl, domains.local3000cl, domains.edgecl)
+    creatLinksWwwMasLocal(domains.wwwcl, domains.localCl, domains.edgecl)
   }
-  else if (~location.href.indexOf(domains.local3000cl)) {
-    creatLinksWwwMasEdge(domains.wwwcl, domains.edgecl, domains.local3000cl)
+  else if (~location.href.indexOf(domains.localCl)) {
+    creatLinksWwwMasEdge(domains.wwwcl, domains.edgecl, domains.localCl)
   }
 
   if (isWwwCOlumbia) {
-    creatLinksLocalMasEdge(domains.local3000co, domains.edgeco, domains.wwwco)
+    creatLinksLocalMasEdge(domains.localCo, domains.edgeco, domains.wwwco)
   }
   else if (isEdgeCOlumbia) {
-    creatLinksWwwMasLocal(domains.wwwco, domains.local3000co, domains.edgeco)
+    creatLinksWwwMasLocal(domains.wwwco, domains.localCo, domains.edgeco)
   }
-  else if (~location.href.indexOf(domains.local3000co)) {
-    creatLinksWwwMasEdge(domains.wwwco, domains.edgeco, domains.local3000co)
+  else if (~location.href.indexOf(domains.localCo)) {
+    creatLinksWwwMasEdge(domains.wwwco, domains.edgeco, domains.localCo)
   }
 
   if (~location.href.indexOf(domains.wwwmx)) {
-    creatLinksLocalMasEdge(domains.local3000mx, domains.edgemx, domains.wwwmx)
+    creatLinksLocalMasEdge(domains.localMx, domains.edgemx, domains.wwwmx)
   }
   else if (~location.href.indexOf(domains.edgemx)) {
-    creatLinksWwwMasLocal(domains.wwwmx, domains.local3000mx, domains.edgemx)
+    creatLinksWwwMasLocal(domains.wwwmx, domains.localMx, domains.edgemx)
   }
-  else if (~location.href.indexOf(domains.local3000mx)) {
-    creatLinksWwwMasEdge(domains.wwwmx, domains.edgemx, domains.local3000mx)
+  else if (~location.href.indexOf(domains.localMx)) {
+    creatLinksWwwMasEdge(domains.wwwmx, domains.edgemx, domains.localMx)
   }
 
   if (~location.href.indexOf(domains.wwwpe)) {
-    creatLinksLocalMasEdge(domains.local3000pe, domains.edgepe, domains.wwwpe)
+    creatLinksLocalMasEdge(domains.localPe, domains.edgepe, domains.wwwpe)
   }
   else if (~location.href.indexOf(domains.edgepe)) {
-    creatLinksWwwMasLocal(domains.wwwpe, domains.local3000pe, domains.edgepe)
+    creatLinksWwwMasLocal(domains.wwwpe, domains.localPe, domains.edgepe)
   }
-  else if (~location.href.indexOf(domains.local3000pe)) {
-    creatLinksWwwMasEdge(domains.wwwpe, domains.edgepe, domains.local3000pe)
+  else if (~location.href.indexOf(domains.localPe)) {
+    creatLinksWwwMasEdge(domains.wwwpe, domains.edgepe, domains.localPe)
   }
 
   if (~location.href.indexOf(domains.wwwus)) {
-    creatLinksLocalMasEdge(domains.local3000us, domains.edgeus, domains.wwwus)
+    creatLinksLocalMasEdge(domains.localUs, domains.edgeus, domains.wwwus)
   }
   else if (~location.href.indexOf(domains.edgeus)) {
-    creatLinksWwwMasLocal(domains.wwwus, domains.local3000us, domains.edgeus)
+    creatLinksWwwMasLocal(domains.wwwus, domains.localUs, domains.edgeus)
   }
-  else if (~location.href.indexOf(domains.local3000us)) {
-    creatLinksWwwMasEdge(domains.wwwus, domains.edgeus, domains.local3000us)
+  else if (~location.href.indexOf(domains.localUs)) {
+    creatLinksWwwMasEdge(domains.wwwus, domains.edgeus, domains.localUs)
   }
 
   function creatLinksLocalMasEdge(local, edge, currUrl) {
