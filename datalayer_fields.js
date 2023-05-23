@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @description  shows the DataLayer's fields
-// @author       Alwksei Elkin
+// @author       Aleksei Elkin
 // @author       Sergio Micó
 // @match        https://*.rankia.com/*
 // @match        https://*.rankia.com.ar/*
@@ -22,14 +22,6 @@
 
 (function() {
     'use strict';
-    const fields = dataLayer?.find(item => item[0]?.['tipo_de_contenido'])
-    const getDlField = fieldName => fields[0]?.[fieldName]
-    const createTR = text => {
-        const p = document.createElement('tr')
-        p.innerHTML = text
-        return p
-    }
-
     GM_addStyle('.dl-info-blk {background: teal; color: white; padding: .5em; font-family: monospace; font-size: 12px; line-height: 1.2; transition: transform .5s ease-in-out; border-collapse:unset;border-spacing:unset;}')
     GM_addStyle('.dl-info-blk {position: fixed; left: 0; bottom: 0; transform: translate(calc(-100% + 2em), calc(100% - 2em)); z-index: 99999; border-top-right-radius: .5em}')
     GM_addStyle('.dl-info-blk:hover {transform: translate(0)}')
@@ -39,6 +31,13 @@
     dl.classList.add('dl-info-blk')
     document.body.appendChild(dl)
     document.addEventListener('turbo:load', () => {
+      const fields = dataLayer?.find(item => item[0]?.['tipo_de_contenido'])
+      const getDlField = fieldName => fields[0]?.[fieldName]
+      const createTR = text => {
+          const tr = document.createElement('tr')
+          tr.innerHTML = text
+          return tr
+      }
       if (fields) {
         dl.innerHTML = ''
         const items = 'blog etiqueta perfil'.split(' ')
