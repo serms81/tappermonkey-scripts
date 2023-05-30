@@ -40,11 +40,8 @@
       }
       if (fields) {
         dl.innerHTML = ''
-        const items = 'blog etiqueta perfil'.split(' ')
-        const isUrlId = getDlField('url_id') != 'no_especificado'
-        const pageId = isUrlId ? `${getDlField('tipo_de_contenido')}#${getDlField('url_id')}` : getDlField('tipo_de_contenido')
+        const items = 'blog etiqueta perfil page_id'.split(' ')
         items.forEach(item => dl.appendChild(createTR(`<td>${item}:</td><td>${getDlField(item)}</td>`)))
-        dl.appendChild(createTR(`<td>pageID:</td><td>${pageId.replace('#', '_')}</td>`))
       } else {
         dl.innerHTML = 'Unable to load DataLayer info'
       }
