@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
   
       btn.innerText = 'Publicar'
       btn.setAttribute('form', form.id)
-      btn.classList.add('rnk-Button-pill-with-icon rnk-Button-outline')
+      btn.classList.add('rnk-Forms_Button')
       title.appendChild(btn)
       
     }
