@@ -3,6 +3,7 @@
 // @description  Banners Ids shown on hover
 // @version      1
 // @downloadURL  https://github.com/alekseielkin/tappermonkey-scripts/blob/main/banner-ids-shown-on-hover.user.js
+// @updateURL    https://github.com/alekseielkin/tappermonkey-scripts/blob/main/banner-ids-shown-on-hover.user.js
 // @author       Sergio Micó
 // @match        https://*/*
 // @grant        GM_addStyle
